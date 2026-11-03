@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f7f4">
+  <meta name="description" content="Entre no GoEvent para acompanhar os passeios e as saídas escolares da sua escola.">
+  <title>Entrar — GoEvent</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body class="auth-mode">
+  <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-up-right" viewBox="0 0 24 24"><path d="M6 18 18 6M6 6h12v12"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="16" rx="3"/><path d="M8 3v4m8-4v4M4 11h16m-11 4h2m2 0h2m-6 3h2"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M5 16v5h14v-5"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3M16 5a3 3 0 0 1 0 6m2 4a5 5 0 0 1 3 5"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 5v2"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-edit" viewBox="0 0 24 24"><path d="m15 4 5 5M4 20l5-1L21 7a2 2 0 0 0-5-5L4 14Z"/></symbol>
+    <symbol id="i-logout" viewBox="0 0 24 24"><path d="M9 4H4v16h5m5-4 4-4-4-4m-6 4h12"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18M9 6V3h6v3M5 6l1 15h12l1-15M10 10v7m4-7v7"/></symbol>
+  </svg>
+  <a class="skip-link" href="#student-login-form">Ir para o conteúdo</a>
+  <header class="header">
+    <a class="brand" href="#" data-home aria-label="GoEvent, início"><span class="brand-mark" aria-hidden="true">g<span>↗</span></span>goevent<span class="brand-period">.</span></a>
+    <nav aria-label="Navegação principal">
+      <button class="nav-button active" data-view="events"><svg class="icon"><use href="#i-calendar"/></svg>Agenda<span class="nav-count" id="nav-count">03</span></button>
+      <button class="nav-button" data-view="admin"><svg class="icon"><use href="#i-grid"/></svg>Organizador</button>
+    </nav>
+    <div class="header-actions"><button class="account-button" id="student-account-button"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg><span id="student-account-label">Meu cadastro</span></button><div class="school-profile"><div><strong id="current-school-name"></strong><span id="current-profile-name"></span></div><span class="school-avatar" id="current-school-avatar" aria-hidden="true"></span></div><button class="logout-button" id="student-logout" aria-label="Sair da conta"><svg class="icon" aria-hidden="true"><use href="#i-logout"/></svg>Sair</button></div>
+    <div class="auth-header-note">PASSEIOS ESCOLARES <span>/</span> GOEVENT</div>
+  </header>
+  <main>
+    <section id="events-view" hidden>
+      <div class="page-meta"><p><span id="agenda-school-name"></span> <span>/</span> PASSEIOS</p><time id="today-label"></time></div>
+      <section class="intro" aria-labelledby="intro-title">
+        <div class="intro-copy">
+          <h1 id="intro-title">Aprender<br>pelo caminho<span>.</span></h1>
+          <p id="agenda-intro">Confira os passeios da sua escola e escolha a próxima saída.</p>
+          <section class="stats" aria-label="Resumo da agenda">
+            <div><strong id="stat-events">0</strong><span>passeios abertos</span></div>
+            <div><strong id="stat-seats">0</strong><span>vagas disponíveis</span></div>
+            <div><strong id="stat-registrations">0</strong><span>inscrições</span></div>
+          </section>
+        </div>
+        <div id="featured-event" class="featured-event"></div>
+      </section>
+      <section id="agenda" class="agenda" aria-labelledby="agenda-title">
+        <div class="agenda-heading"><div><h2 id="agenda-title">Próximos passeios <span id="event-count">0</span></h2><p>Confira os destinos, os horários e as vagas.</p></div><label class="search"><svg class="icon" aria-hidden="true"><use href="#i-search"/></svg><input id="search" type="search" placeholder="Buscar passeio ou destino" aria-label="Buscar passeio ou destino"></label></div>
+        <div class="filter-bar">
+          <div class="categories" role="group" aria-label="Filtrar por categoria">
+            <button class="chip selected" data-category="Todos">Todos<span id="all-count">3</span></button>
+            <button class="chip" data-category="Ciência">Ciência</button>
+            <button class="chip" data-category="Cultura">Cultura</button>
+            <button class="chip" data-category="Natureza">Natureza</button>
+          </div>
+          <div class="view-controls"><label class="sort-label"><span class="sr-only">Ordenar eventos</span><select id="sort-order"><option value="asc">Mais próximos</option><option value="desc">Mais distantes</option></select></label><div class="layout-toggle" role="group" aria-label="Visualização dos eventos"><button class="layout-button active" data-layout="grid" aria-label="Ver em grade" aria-pressed="true"><svg class="icon"><use href="#i-grid"/></svg></button><button class="layout-button" data-layout="list" aria-label="Ver em lista" aria-pressed="false"><svg class="icon"><use href="#i-list"/></svg></button></div></div>
+        </div>
+        <div id="event-grid" class="event-grid"></div>
+        <div id="empty-events" class="empty" hidden><svg class="icon"><use href="#i-search"/></svg><h3>Nenhum passeio por aqui.</h3><p>Tente outra palavra ou escolha uma categoria diferente.</p></div>
+        <div class="agenda-bottom"><span id="results-label" aria-live="polite"></span><span>Atividades organizadas pela sua escola</span></div>
+      </section>
+      <aside class="organizer-invite"><div class="invite-icon"><svg class="icon"><use href="#i-calendar"/></svg></div><div><h2>Você organiza as saídas da escola?</h2><p>Acesse o painel para cadastrar passeios e acompanhar as inscrições.</p></div><button class="text-button" data-open-admin>Entrar como organizador<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button></aside>
+    </section>
+    <section id="admin-view" class="admin" hidden>
+      <div class="page-meta"><p><span id="admin-school-name"></span> <span>/</span> ORGANIZADOR</p><button class="logout-button" id="organizer-logout"><svg class="icon" aria-hidden="true"><use href="#i-logout"/></svg>Sair do painel</button></div>
+      <div class="section-heading admin-heading"><div><div class="school-badge"><strong id="admin-school-badge"></strong><span>PAINEL DA ESCOLA</span></div><h1>Seus passeios<span>.</span></h1><p id="admin-school-intro">Gerencie as saídas e as inscrições da sua escola.</p></div><button class="button primary" id="new-event"><svg class="icon"><use href="#i-plus"/></svg>Criar passeio</button></div>
+      <div class="admin-summary"><div><span>Passeios cadastrados</span><strong id="admin-event-count">0</strong></div><div><span>Total de inscrições</span><strong id="admin-registration-count">0</strong></div><div><span>Vagas em aberto</span><strong id="admin-seats-count">0</strong></div></div>
+      <div class="admin-table-heading"><span>PASSEIO / DESTINO</span><span>PARTICIPAÇÃO</span><span>GERENCIAR</span></div>
+      <div id="admin-list" class="admin-list"></div>
+      <section class="participants-panel" id="participants-panel" hidden><div class="section-heading"><div><div class="eyebrow">PARTICIPANTES</div><h2 id="participants-title"></h2></div><button class="button secondary" id="export-csv"><svg class="icon"><use href="#i-download"/></svg>Exportar CSV</button></div><div class="table-wrap"><table><thead><tr><th>Aluno</th><th>E-mail</th><th>Telefone</th><th>Escola</th><th>Turma</th><th>Inscrição</th><th class="participant-actions">Ações</th></tr></thead><tbody id="participants-body"></tbody></table></div><p id="empty-participants" class="empty" hidden>Nenhuma inscrição neste evento por enquanto.</p></section>
+      <p class="admin-note">Ambiente de apresentação. Os dados ficam salvos neste navegador.</p>
+    </section>
+    <section id="student-view" class="account-page" hidden aria-labelledby="student-page-title">
+      <button class="account-back" data-back-agenda><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg><span id="student-back-label">Voltar ao login</span></button>
+      <div class="account-layout">
+        <aside class="account-aside student-aside"><div class="account-kicker">GOEVENT / CADASTRO</div><h1>Um cadastro.<br>Novos<br>caminhos<span>.</span></h1><p>Escolha sua escola no formulário e acompanhe os passeios preparados para você.</p><div class="account-aside-footer"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg><span>Os próximos destinos começam na sua escola.</span></div></aside>
+        <div class="account-form-panel"><div class="eyebrow">CADASTRO DO ALUNO</div><h2 id="student-page-title">Vamos começar<span>.</span></h2><p id="student-form-intro">Crie sua conta e escolha sua escola.</p><form id="student-form"><label>Nome completo<input name="name" required minlength="3" maxlength="100" autocomplete="name" placeholder="Nome e sobrenome"></label><label>E-mail<input name="email" type="email" required maxlength="150" autocomplete="email" placeholder="voce@exemplo.com"></label><label>Telefone com DDD<input name="phone" type="tel" required maxlength="22" inputmode="tel" autocomplete="tel" placeholder="(13) 99999-9999"></label><label>Escola parceira<select name="schoolId" required><option value="" disabled selected>Selecione sua escola</option><option value="fortec">Fortec</option></select></label><label><span id="student-password-label">Crie uma senha</span><input id="student-password" name="password" type="password" required minlength="6" maxlength="150" autocomplete="new-password" placeholder="Pelo menos 6 caracteres"></label><label>Confirme a senha<input id="student-password-confirm" name="passwordConfirm" type="password" required minlength="6" maxlength="150" autocomplete="new-password" placeholder="Digite a senha novamente"></label><p class="form-error" id="student-error" role="alert"></p><button class="button primary full" type="submit"><span id="student-submit-label">Criar minha conta</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button><p class="form-note">Na apresentação, use dados fictícios.</p></form><p class="login-student-note" id="signup-login-note">Já tem conta? <button type="button" data-student-login>Entrar como aluno</button></p></div>
+      </div>
+    </section>
+    <section id="student-login-view" class="account-page entry-page" aria-labelledby="student-login-title">
+      <div class="account-layout login-layout">
+        <aside class="account-aside student-aside"><div class="account-kicker">GOEVENT / PASSEIOS ESCOLARES</div><h1>A próxima<br>saída começa<br>aqui<span>.</span></h1><p>Entre na sua conta para descobrir os passeios, conferir as vagas e participar com a sua turma.</p><div class="account-aside-footer"><svg class="icon" aria-hidden="true"><use href="#i-up-right"/></svg><span>Mais descobertas fora da sala de aula.</span></div></aside>
+        <div class="account-form-panel"><div class="eyebrow">ACESSO DO ALUNO</div><h2 id="student-login-title">Vamos nessa<span>?</span></h2><p>Entre com o e-mail e a senha do seu cadastro.</p><form id="student-login-form"><label>E-mail<input name="email" type="email" required maxlength="150" autocomplete="username" placeholder="voce@exemplo.com"></label><label>Senha<div class="password-field"><input id="student-login-password" name="password" type="password" required maxlength="150" autocomplete="current-password" placeholder="Sua senha"><button type="button" data-toggle-password="student-login-password" aria-label="Mostrar senha" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-eye"/></svg></button></div></label><p class="form-error" id="student-login-error" role="alert"></p><button class="button primary full" type="submit">Entrar como aluno<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button></form><p class="login-student-note">Primeiro acesso? <button type="button" data-open-signup>Criar minha conta</button></p><div class="role-divider"><span>ACESSO DA ESCOLA</span></div><button class="button secondary full organizer-entry-button" id="student-login-organizer"><span><svg class="icon" aria-hidden="true"><use href="#i-grid"/></svg>Entrar como organizador</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button></div>
+      </div>
+    </section>
+    <section id="login-view" class="account-page" hidden aria-labelledby="login-page-title">
+      <button class="account-back" data-student-login><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>Voltar ao login do aluno</button>
+      <div class="account-layout login-layout">
+        <aside class="account-aside organizer-aside"><div class="account-kicker">GOEVENT / ORGANIZADORES</div><div class="organizer-lock"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg></div><h1>A sua escola.<br>A sua agenda<span>.</span></h1><p>Cadastre as saídas escolares, acompanhe as vagas e consulte quem vai participar.</p><div class="account-aside-footer"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg><span>Um painel para os passeios da sua escola.</span></div></aside>
+        <div class="account-form-panel"><div class="eyebrow">ÁREA DO ORGANIZADOR</div><h2 id="login-page-title">Bom ter você aqui<span>.</span></h2><p>Entre com o acesso da sua escola para gerenciar os passeios.</p><form id="login-form"><label>E-mail do organizador<input name="email" type="email" required maxlength="150" autocomplete="username" placeholder="E-mail da sua escola"></label><label>Senha<div class="password-field"><input id="organizer-password" name="password" type="password" required maxlength="150" autocomplete="current-password" placeholder="Sua senha"><button type="button" id="toggle-password" data-toggle-password="organizer-password" aria-label="Mostrar senha" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-eye"/></svg></button></div></label><p class="form-error" id="login-error" role="alert"></p><button class="button primary full" type="submit">Entrar no painel<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button></form><p class="login-student-note">É aluno? <button type="button" id="login-student-link">Entrar na minha conta</button></p></div>
+      </div>
+    </section>
+  </main>
+  <footer><a class="brand footer-brand" href="#" data-home>goevent<span class="brand-period">.</span></a><span>A agenda da sua escola.</span><p>Projeto acadêmico <span>/</span> Gerência de Projetos</p><a href="#" class="back-top" aria-label="Voltar ao topo">↑</a></footer>
+  <dialog id="registration-dialog" aria-labelledby="registration-title">
+    <form id="registration-form"><div class="dialog-heading"><span class="dialog-label"><svg class="icon"><use href="#i-users"/></svg>INSCRIÇÃO</span><button type="button" class="close" data-close aria-label="Fechar"><svg class="icon"><use href="#i-close"/></svg></button></div><h2 id="registration-title">Seu lugar está aqui<span>.</span></h2><p id="registration-event" class="dialog-subtitle"></p><div class="registration-student"><div><strong id="registration-student-name"></strong><span id="registration-student-contact"></span><span id="registration-student-school"></span></div><button type="button" class="text-button" id="edit-student-registration">Editar dados</button></div><label>Turma<input name="classroom" required maxlength="40" placeholder="Ex.: 2º ano B"></label><p class="form-error" id="registration-error" role="alert"></p><button class="button primary full" type="submit">Confirmar inscrição<svg class="icon"><use href="#i-arrow"/></svg></button><p class="form-note">Sua inscrição será vinculada ao seu cadastro.</p></form>
+  </dialog>
+  <dialog id="event-dialog" aria-labelledby="new-event-title">
+    <form id="event-form"><div class="dialog-heading"><span class="dialog-label"><svg class="icon"><use href="#i-calendar"/></svg>ORGANIZADOR</span><button type="button" class="close" data-close aria-label="Fechar"><svg class="icon"><use href="#i-close"/></svg></button></div><h2 id="new-event-title">Coloque na agenda<span>.</span></h2><p class="dialog-intro" id="event-school-note">O passeio será vinculado à sua escola.</p><label>Nome do passeio<input name="title" required minlength="3" maxlength="100" placeholder="Ex.: Visita ao museu"></label><div class="form-row"><label>Categoria<select name="category"><option>Ciência</option><option>Cultura</option><option>Natureza</option><option>Tecnologia</option><option>Palestras</option><option>Esportes</option></select></label><label>Total de vagas<input name="capacity" type="number" required min="1" max="10000" value="30"></label></div><div class="form-row"><label>Data<input name="date" type="date" required></label><label>Horário de saída<input name="time" type="time" required></label></div><label>Destino / ponto de encontro<input name="location" required maxlength="100" placeholder="Ex.: Museu de ciência · saída pela portaria"></label><label>Sobre o passeio<textarea name="description" required maxlength="400" rows="3" placeholder="Qual é a programação? O que os alunos precisam levar?"></textarea></label><p class="form-error" id="event-error" role="alert"></p><button class="button primary full" type="submit"><span id="event-submit-label">Publicar passeio</span><svg class="icon"><use href="#i-arrow"/></svg></button></form>
+  </dialog>
+  <dialog id="remove-registration-dialog" aria-labelledby="remove-registration-title" aria-describedby="remove-registration-description">
+    <form id="remove-registration-form"><div class="dialog-heading"><span class="dialog-label"><svg class="icon" aria-hidden="true"><use href="#i-trash"/></svg>GERENCIAR INSCRIÇÃO</span><button type="button" class="close" data-close aria-label="Fechar"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button></div><h2 id="remove-registration-title">Remover inscrição?</h2><p id="remove-registration-description" class="dialog-intro"></p><p class="removal-note">A vaga ficará disponível novamente. O cadastro do aluno será mantido.</p><p class="form-error" id="remove-registration-error" role="alert"></p><div class="dialog-actions"><button type="button" class="button secondary" data-close autofocus>Cancelar</button><button type="submit" class="button danger">Remover inscrição</button></div></form>
+  </dialog>
+  <div id="toast" class="toast" role="status" hidden></div>
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="520" viewBox="0 0 400 520">
+  <path fill="#3658ed" d="M0 0h400v520H0z"/>
+  <g fill="none" stroke="#c8d5ff" stroke-width="1.5"><circle cx="200" cy="368" r="124"/><ellipse cx="200" cy="368" rx="77" ry="124"/><ellipse cx="200" cy="368" rx="29" ry="124"/><ellipse cx="200" cy="368" rx="124" ry="43"/><ellipse cx="200" cy="368" rx="124" ry="87"/><path d="M76 368h248m-124-124v248"/></g>
+  <g fill="#fff" font-family="Arial,Helvetica,sans-serif"><text x="26" y="37" font-size="10" letter-spacing="2.5">GOEVENT / TECNOLOGIA</text><text x="19" y="143" font-size="87" font-weight="900" letter-spacing="-6">FEIRA</text><text x="19" y="223" font-size="87" font-weight="900" letter-spacing="-6">TECH.</text><text x="27" y="501" font-size="9" letter-spacing="2">IDEIAS FEITAS POR ALUNOS</text></g>
+</svg>

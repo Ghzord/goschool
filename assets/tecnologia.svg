@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="460" viewBox="0 0 760 460">
+  <defs><pattern id="scan" width="9" height="9" patternUnits="userSpaceOnUse"><path d="M0 1h9" stroke="#a7b8ff" stroke-width="1"/></pattern><clipPath id="globe"><circle cx="570" cy="242" r="173"/></clipPath></defs>
+  <path fill="#3658ed" d="M0 0h760v460H0z"/>
+  <path fill="#2747cc" d="M483 0h277v460H483z"/>
+  <g clip-path="url(#globe)"><circle cx="570" cy="242" r="173" fill="#d4e0ff"/><path fill="url(#scan)" d="M385 60h370v370H385z"/><g fill="none" stroke="#3658ed" stroke-width="2"><ellipse cx="570" cy="242" rx="105" ry="173"/><ellipse cx="570" cy="242" rx="40" ry="173"/><ellipse cx="570" cy="242" rx="173" ry="64"/><ellipse cx="570" cy="242" rx="173" ry="126"/><path d="M397 242h346M570 69v346"/></g></g>
+  <g font-family="Arial,Helvetica,sans-serif" fill="#fff"><text x="36" y="43" font-size="12" letter-spacing="3">INVENTAR. TESTAR. CRIAR.</text><text x="30" y="177" font-size="117" font-weight="900" letter-spacing="-7">FEIRA</text><text x="30" y="286" font-size="117" font-weight="900" letter-spacing="-7">TECH.</text><text x="36" y="417" font-size="11" letter-spacing="2">IDEIAS FEITAS POR ALUNOS</text><text x="709" y="419" font-size="29">↗</text></g>
+  <path d="M36 355h246" stroke="#a8baff"/><path d="m303 343 12 12-12 12m-20-12h31" fill="none" stroke="#cbe0ff" stroke-width="2"/>
+</svg>
